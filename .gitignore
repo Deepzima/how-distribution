@@ -9,3 +9,6 @@
 .terraform.lock.hcl
 .vscode
 .vscode/settings.json
+
+# Image buffers
+**/.tar.gz
