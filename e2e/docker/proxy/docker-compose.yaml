@@ -1,11 +1,21 @@
+# image: openresty/openresty:alpine
+
 services:
+  # nginx:
+    # build: ./proxy/
+    # ports:
+    #   - "80:80"
+    # volumes:
+    #   - ./proxy/config/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+    #   # - ./proxy/src/basic_auth.lua:/usr/local/openresty/nginx/conf/basic_auth.lua
+    # depends_on:
+    #   - registry
   nginx:
     build: ./proxy/
-    # image: openresty/openresty:alpine
     ports:
       - "80:80"
     volumes:
-      - ./proxy/config/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
-      # - ./proxy/src/basic_auth.lua:/usr/local/openresty/nginx/conf/basic_auth.lua
+      - ./proxy/config/nginx_auth_rbac.conf:/usr/local/openresty/nginx/conf/nginx_auth_rbac.conf
     depends_on:
       - registry
+
