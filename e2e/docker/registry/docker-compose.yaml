@@ -6,7 +6,10 @@ services:
     environment:
       REGISTRY_HTTP_ADDR: :5000
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
-      REGISTRY_STORAGE_DELETE_ENABLED: "true"  # Enable l'eliminazione
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"  # Enable delete
+      # REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+      # REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
     volumes:
       - registry-data:/var/lib/registry
-      - ./config.yml:/etc/docker/registry/configs/config.yml 
+      - ./registry/config/config.yml:/etc/docker/registry/configs/config.yml 
+      - ./registry/certs:/certs

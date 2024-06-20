@@ -12,8 +12,11 @@ storage:
   delete:
     enabled: true
 http:
-  addr: :5000
+  addr: localhost:5000
   secret: aRandomSecret
+  tls:
+    certificate: /certs/fullchain.pem
+    key: /certs/privkey.pem
   headers:
     X-Content-Type-Options: [nosniff]
 health:

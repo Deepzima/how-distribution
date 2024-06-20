@@ -11,4 +11,5 @@
 .vscode/settings.json
 
 # Image buffers
-**/.tar.gz
+**/**.tar.gz
+**/**.pem
