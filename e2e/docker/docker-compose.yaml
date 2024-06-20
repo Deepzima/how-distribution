@@ -2,6 +2,10 @@ version: '3.9'
 
 volumes:
   registry-data: {}
+  minio1-data: {}
+  minio2-data: {}
+  minio3-data: {}
+  minio4-data: {}
 
 networks:
   registry-network:

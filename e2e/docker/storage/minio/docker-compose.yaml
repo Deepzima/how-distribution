@@ -1,0 +1,46 @@
+x-environment:
+  &minio-env
+  MINIO_ROOT_USER: minioadmin
+  MINIO_ROOT_PASSWORD: minioadmin
+
+services:
+  minio1:
+    image: minio/minio
+    ports:
+      - "9001:9000"
+      - "9050:9001"
+    environment: *minio-env
+    command: server --console-address ":9001" http://minio{1...4}/data
+
+  minio2:
+    image: minio/minio
+    ports:
+      - "9002:9000"
+    environment: *minio-env
+    command: server http://minio{1...4}/data
+
+  minio3:
+    image: minio/minio
+    ports:
+      - "9003:9000"
+    environment: *minio-env
+    command: server http://minio{1...4}/data
+
+  minio4:
+    image: minio/minio
+    ports:
+      - "9004:9000"
+    environment: *minio-env
+    command: server http://minio{1...4}/data
+
+  mc:
+    image: minio/mc
+    depends_on:
+      - minio1
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set myminio http://minio1:9000 minioadmin minioadmin);
+      do echo 'Waiting for MinIO...'; sleep 3; done;
+      /usr/bin/mc mb -p myminio/registry-bucket;
+      /usr/bin/mc ls myminio;
+      "

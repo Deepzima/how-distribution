@@ -7,16 +7,24 @@ log:
   fields:
     service: registry
 storage:
-  filesystem:
-    rootdirectory: /var/lib/registry
-  delete:
-    enabled: true
+  s3:
+    accesskey: minioadmin
+    secretkey: minioadmin
+    region: us-east-1
+    regionendpoint: http://minio1:9000
+    bucket: registry-bucket
+    encrypt: false
+    secure: false
+    v4auth: true
+    chunksize: 5242880
+    forcepathstyle: true
+    rootdirectory: /registry-bucket/data
 http:
   addr: localhost:5000
   secret: aRandomSecret
-  tls:
-    certificate: /certs/fullchain.pem
-    key: /certs/privkey.pem
+  # tls:
+  #   certificate: /certs/fullchain.pem
+  #   key: /certs/privkey.pem
   headers:
     X-Content-Type-Options: [nosniff]
 health:
