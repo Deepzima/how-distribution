@@ -5,11 +5,16 @@ services:
       - "5001:5000"
     environment:
       REGISTRY_HTTP_ADDR: :5000
-      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+      # REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
       REGISTRY_STORAGE_DELETE_ENABLED: "true"  # Enable delete
       # REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
       # REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
     volumes:
-      - registry-data:/var/lib/registry
-      - ./registry/config/config.yml:/etc/docker/registry/configs/config.yml 
-      - ./registry/certs:/certs
+      # - registry-data:/var/lib/registry
+      - ./registry/config/config.yml:/etc/distribution/config.yml 
+      # - ./registry/certs:/certs
+    depends_on:
+      - minio1
+      - minio2
+      - minio3
+      - minio4
