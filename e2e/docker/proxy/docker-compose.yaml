@@ -11,7 +11,7 @@ services:
     # depends_on:
     #   - registry
   nginx:
-    build: ./proxy/
+    build: ./proxy/src/resty
     ports:
       - "80:80"
     volumes:
