@@ -1,0 +1,10 @@
+services:
+    opa:
+      image: openpolicyagent/opa:latest
+      ports:
+        - "8181:8181"
+        - "8182:8182" # Port for the OPA UI
+      volumes:
+        - ./opa/policy:/policy
+      command: "run --server --watch /policy"
+      # command: "run --server --watch /policy --enable-logging --log-level debug --set=decision_logs.console=true" 

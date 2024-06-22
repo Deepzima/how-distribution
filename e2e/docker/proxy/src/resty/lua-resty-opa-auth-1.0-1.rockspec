@@ -22,5 +22,6 @@ build = {
   modules = {
     ["opa_auth"] = "opa_auth/init.lua",
     ["opa_auth.authenticate"] = "opa_auth/authenticate.lua",
+    ["opa_auth.authorize"] = "opa_auth/authorize.lua",
   }
 }
