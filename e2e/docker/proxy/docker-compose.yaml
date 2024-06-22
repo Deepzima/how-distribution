@@ -15,7 +15,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./proxy/config/nginx_auth_rbac.conf:/usr/local/openresty/nginx/conf/nginx_auth_rbac.conf
+      - ./proxy/config/nginx_auth_rbac.conf:/usr/local/openresty/nginx/conf/nginx.conf
     depends_on:
       - registry
 

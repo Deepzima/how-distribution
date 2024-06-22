@@ -26,6 +26,7 @@ FROM openresty/openresty:alpine-fat
 
 RUN apk add --no-cache git perl curl unzip
 RUN opm get ledgetech/lua-resty-http
+
 RUN luarocks install lua-cjson
 
 COPY --from=builder /prebuilt-rocks /prebuilt-rocks/

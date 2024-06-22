@@ -15,7 +15,7 @@ local function authenticate()
     local decoded_credentials = ngx.decode_base64(encoded_credentials)
     local user, pass = decoded_credentials:match("([^:]+):([^:]+)")
 
-    if user == "user" and pass == "password" then
+    if user == "user" and pass == "passwordz" then
         ngx.log(ngx.INFO, "User authenticated")
     else
         ngx.status = ngx.HTTP_UNAUTHORIZED

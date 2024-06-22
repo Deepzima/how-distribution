@@ -20,7 +20,7 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["resty.auth"] = "opa_auth/init.lua",
-    ["resty.auth.authenticate"] = "opa_auth/authenticate.lua",
+    ["opa_auth"] = "opa_auth/init.lua",
+    ["opa_auth.authenticate"] = "opa_auth/authenticate.lua",
   }
 }
